@@ -1,0 +1,35 @@
+version: "3.2"
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1000:1000"
+    volumes:
+      - type: bind
+        source: ./server
+        target: /server
+    command: python ./server/server.py
+  opcserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: ./opcserver
+        target: /opcserver
+    ports:
+      - "4840:4840"
+    command: python /opcserver/server.py
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-webserver
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./client
+        target: /client
+    command: npm --prefix ./client run dev

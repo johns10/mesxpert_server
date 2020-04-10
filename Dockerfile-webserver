@@ -1,0 +1,23 @@
+FROM alpine as base
+FROM base as builder
+RUN apk add --update build-base nodejs-npm
+RUN mkdir /install
+RUN npm i webpack \
+  vue \
+  vue-cookies \
+  vue-cli \
+  babel-core \
+  babel-loader \
+  vuex \
+  babel-preset-env \
+  vue-native-websocket \
+  babel-preset-vue \
+  vuetify \
+  stylus \
+  stylus-loader \
+  axios  \
+  uuid \
+  vue-apollo \
+  graphql \
+  apollo-boost \
+  --save-dev

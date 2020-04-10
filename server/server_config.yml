@@ -1,0 +1,7 @@
+opc servers:
+  1:
+    permanent_id: 1
+    name: internal server
+    host: localhost
+    endpoint: /freeopcua/server
+    port: 4840
